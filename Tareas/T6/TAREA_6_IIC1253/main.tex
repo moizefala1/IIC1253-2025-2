@@ -1,0 +1,113 @@
+% Plantilla para documentos LaTeX para enunciados
+% Por Pedro Pablo Aste Kompen - ppaste@uc.cl
+% Licencia Creative Commons BY-NC-SA 3.0
+% http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+\documentclass[12pt]{article}
+
+% Margen de 1 pulgada por lado
+\usepackage{fullpage}
+% Incluye gráficas
+\usepackage{graphicx}
+% Packages para matemáticas, por la American Mathematical Society
+\usepackage{amssymb}
+\usepackage{amsmath}
+% Desactivar hyphenation
+\usepackage[none]{hyphenat}
+% Saltar entre párrafos - sin sangrías
+\usepackage{parskip}
+% Español y UTF-8
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+% Links en el documento
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\setlength{\headsep}{5pt}
+\pagestyle{fancy}
+% Código en el documento
+\usepackage{listings}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Exp}[1]{\mathcal{E}_{#1}}
+\newcommand{\List}[1]{\mathcal{L}_{#1}}
+\newcommand{\EN}{\Exp{\N}}
+\newcommand{\LN}{\List{\N}}
+
+\newcommand{\comment}[1]{}
+\newcommand{\lb}{\\~\\}
+\newcommand{\eop}{_{\square}}
+\newcommand{\hsig}{\hat{\sigma}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\lra}{\leftrightarrow}
+
+% Cambiar por nombre completo + número de alumno
+\newcommand{\alumno}{Alvaro Panozo - 24664}
+\rhead{Tarea N - \alumno}
+
+\begin{document}
+\thispagestyle{empty}
+% Membrete
+% PUC-ING-DCC-IIC1103
+\begin{minipage}{2.3cm}
+\includegraphics[width=2cm]{img/logo.pdf}
+\vspace{0.5cm} % Altura de la corona del logo, así el texto queda alineado verticalmente con el círculo del logo.
+\end{minipage}
+\begin{minipage}{\linewidth}
+\textsc{\raggedright \footnotesize
+Pontificia Universidad Católica de Chile \\
+Departamento de Ciencia de la Computación \\
+IIC1253 - Matemáticas Discretas \\}
+\end{minipage}
+
+
+% Titulo
+\begin{center}
+\vspace{0.5cm}
+{\huge\bf Tarea 6}\\
+\vspace{0.2cm}
+\today\\
+\vspace{0.2cm}
+\footnotesize{2º semestre 2025 - Profesores M. Arenas - A. Kozachinskiy - M. Romero}\\
+\vspace{0.2cm}
+\footnotesize{\alumno}
+\rule{\textwidth}{0.05mm}
+\end{center}
+
+
+
+\section*{Respuestas}
+% Estas numeracion es solo de ejemplo
+
+\subsection*{Pregunta 1}
+\subsubsection*{Pregunta 1.1}
+$fof$ es inyectiva, entonces: \newline
+$\forall a,b \in A: f(f(a))= f(f(b)) \rightarrow a=b$\newline
+Tomemos $x,y \in A$ tal que $f(x) = f(y)$, luego como $fof$ es inyectiva, aplicamos $f$ en ambos lados $f(f(x)) = f(f(y))$, y entonces $x=y$. En general, $\forall x,y\in A: f(x) = f(y) \rightarrow x=y$
+
+\newpage
+\subsubsection*{Pregunta 1.2}
+Sabemos que $fof$ es sobre, entonces \newline
+$\forall b\in A \exists x \in A: f(f(x)) =b$ (Notemos que $f(x): A \rightarrow A$, entonces $f(x)\in A$) Luego, decimos $a =f(x)$ tal que $f(a) =b$, entonces $\forall b \in A \exists a\in A: f(a) = b$. F es sobre
+\newpage
+\subsubsection*{Pregunta 1.3}
+$f$ es iny. $\leftrightarrow \forall X_1,X_2 \subseteq A: f(X_1\cap X_2)=f(X_1)\cap f(X_2)$\newline
+$\rightarrow$:\newline
+$f(X_1\cap X_2)= \{f(a)\in B| a\in X_1\cap X_2\}$ ( notemos que $X_1 =X_2$ se cumple trivialmente )\newline
+Sea $y\in f(X_1\cap X_2)$, entonces debe existir $a\in X_1\cap X_2: f(a) = y$. Sabemos que $a \in X_1$, osea $y\in f(X_1)$. Analogamente, $a\in X_2$, por lo que $y \in f(X_2)$, por lo que $y\in f(X_1)\cap f(X_2)$. \newline Por lo que $f(X_1\cap X_2) \subseteq f(X_1)\cap f(X_2)$
+\newline
+Ahora, sea $y\in f(X_1)\cap f(X_2)$. Entonces $y \in f(X_1) \land y\in f(X_2)$, osea $\exists a_1 \in X_1: f(a_1) =y$, y analogamente $\exists a_2 \in X_2: f(a_2)=y $. Como $f$ es iny., $a_1=a_2=a$, osea $a\in X_1\cap X_2$, y entonces $y\in f(X_1\cap X_2)$.\newline
+Finalmente, $f(X_1)\cap f(X_2) \subseteq f(X_1\cap X_2)$. Se concluye que $f(X_1\cap X_2)= f(X_1)\cap f(X_2)$\newline
+$\leftarrow$:\newline
+Sabemos que $f(X_1)\cap f(X_2) = f(X_1\cap X_2)$. Sea $a_1,a_2$ tales que $a_1 \neq a_2$ pero $f(a_1) =f(a_2) = y$. Si tomamos $X_1 = \{a_1\}$, $X_2=\{a_2\}$, nos queda que $X_1\cap X_2 = \emptyset \rightarrow f(X_1) \cap f(X_2) =f(\emptyset) = \emptyset$. Luego, $f(X_1) \cap f(X_2)= \{f(a_1)\}\cap \{f(a_2)\}$, como $f(a_1) = f(a_2)$, $f(X_1) \cap f(X_2) = \{f(a_1)\}$. Uniendo, nos queda $\{f(a_1)\}= \emptyset$, lo que es una contradiccion que viene de asumir $a_1 \neq a_2 \land f(a_1) = f(a_2)$. Entonces, $f$ es inyectiva.\newline
+\newpage
+\subsubsection*{Pregunta 1.4}
+$f$ es sobreyectiva $\leftrightarrow \forall Y\subseteq B: f(f^{-1}(Y))=Y$\newline
+$\rightarrow$\newline
+Sea $b \in f(f^{-1}(Y))$, entonces $\exists a\in f^{-1}(Y)$ tq $f(a) = b$. Como $a \in f^{-1}(Y)$, entonces $f(a) \in Y$, osea que $b \in Y$. Entonces $f(f^{-1}(Y)) \subseteq Y$\newline
+Sea $b \in Y$. Como la función es sobreyectiva, toda imagen debe tener preimagen, osea $\exists a \in A$ $\forall b \in B: f(a) = b$. Entonces, $a\in f^{-1}(Y)$. Si tomamos $ f(f^{-1}(Y)) = \{f(a) \in B | a\in f^{-1}(Y)\}$, como $b=f(a)\in Y\subseteq B$, y ademas $a\in f^{-1}(Y)$, entonces $b\in f(f^{-1}(Y))$. Entonces $Y \subseteq f(f^{-1}(Y))$.\newline
+Se concluye que $Y = f(f^{-1}(Y))$\newline
+\newline
+$\leftarrow$\newline
+Como $Y$ ppuede ser cualquier subconjunto, ppodemos tomar $Y=B$. Luego, por hipótesis, $ f(f^{-1}(B)) = B$. Notemos que $f^{-1}(B)= \{a\in A| f(a) \in B\}$. Como $f$ es una funcion bien definida, $\forall a \in A \exists! b\in B$ tq $f(a) =b $. Por lo tanto $f^{-1}(B) = A$. Nos queda $f(A) = B$, que es una forma de definir sobreyectividad.
+\end{document}
